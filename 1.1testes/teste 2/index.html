@@ -1,0 +1,55 @@
+<sequence name = "Music Now">
+	<receive name = "Realiza Desenvolvimento"/>
+	<invoke name = "Faz Publicidade"/>
+	<invoke name = "Faz Propaganda"/>
+	<receive name = "Cliente Final"/>
+        <if name = "Utiliza a plataforma">
+            <condition>
+                &order = "verificação dos dados"
+            </condition>
+            <if name = "Dados incorretos">
+                <condition>
+                    <repeatUntil>
+                        <invoke name = "Utiliza a plataforma">
+                    </repeatUntil>
+                </condition>
+            </if>
+            <if name = "Dados corretos">
+                <condition>
+                    <invoke name = "Utilizando a plataforma">
+                </condition>
+            </if>
+        </if>	
+        <else>
+                &order = "verificação dos dados"
+                    <sequence name = "Planos">
+                        <receive name = "Verifica os planos"/>
+                        <invoke name = "compra um plano"/>
+                        <receive name = "Gera lucro para a empresa">
+                            <if name = "Gera lucro para a empresa">
+                                <condition>
+                                    <invoke name = "Lucro para a equipe" || invoke name = "Investimento interno"/>
+                                </condition>
+                            </if>
+            </else>
+            <if name = "Plataforma funcionando">
+                <condition>
+                </end>
+                </condition>
+            </if>
+            <else>
+                <sequence name = "Suporte">
+                    <invoke name = "Plataforma do cliente"/>
+                    <start message = "MENSAGEM AO SUPORTE DA PLATAFORMA"/>
+                    <invoke name = "Equipe realiza suporte ao cliente"/>
+                    <if name = "sim">
+                        <condition>
+                            <end message/>
+                        </condition>
+                    </if>
+                    <else>
+                        <invoke name = "Aguarda na linha de espera"/>
+                        <end message/>
+                    </else>
+                </else>
+</sequence>
